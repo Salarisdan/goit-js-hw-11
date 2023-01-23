@@ -8,13 +8,11 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout 🛎️
-        uses: actions/checkout@v2.3.1
+      - name: Save state
+  run: echo "::save-state name={name}::{value}"
 
-      - name: Install and Build 🔧
-        run: |
-          npm ci
-          npm run build
+- name: Set output
+  run: echo "::set-output name={name}::{value}"
 
       - name: Deploy 🚀
         uses: JamesIves/github-pages-deploy-action@4.1.0
